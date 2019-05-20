@@ -1,0 +1,34 @@
+<div>
+	<img src="/assets/bg.jpg" style="width:100%; margin-top: -100px; position: absolute;" >
+  <div class="row" style="margin-top: 60px">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+			 <div class="col-sm-12" style="height: 30px; width: 100%"></div>
+       <div style="padding-left:70px">
+         <h1> Events </h1>
+         </div>
+        <button routerLink="/addevent"
+                class="btn btn-link pull-right"
+                type="button"
+                style="margin: -35px 15px 0px 0px">Add Event</button>
+                <hr>
+    <div class="col inline" *ngFor="let place of places">
+        <div class="col-sm-12" style="margin-bottom: 5px">
+          <a routerLink="/detail/{{ place.attID }}">
+            <div class="col-sm-3">
+                <img [src]="place.img" style="width: 100%;">
+            </div>
+          </a>
+            <div class="col-sm-9">
+              <a routerLink="/eventdetail/{{ place.attID }}">
+                <h3 style="/*position: absolute; */text-align: left;">{{ place.name }}</h3>
+                <!-- <img [src]="place.img" style="width: 100%;"> -->
+              </a>
+
+                <p style="line-height: 25px; height: 75px; overflow: hidden; text-overflow: ellipsis">{{ place.description }}</p>
+            </div>
+        </div>
+    </div>
+    <hr>
+    </div>
+</div>
+</div>

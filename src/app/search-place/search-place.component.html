@@ -1,0 +1,112 @@
+<div>
+<img src="/assets/bg.jpg" style="width:100%; margin-top: -100px; position: absolute;">
+<div class="container" style="margin-top: 60px">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <div class="col-sm-12" style="height: 30px; width: 100%"></div>
+      <div style="padding-left:20px">
+        <h1> Destination </h1>
+        </div>
+       <button routerLink="/addplace"
+               class="btn btn-link pull-right"
+               type="button"
+               style="margin: -35px 15px 0px 0px">Add Place</button>
+               <hr>
+        <div class="col-sm-4">
+            <div class="form-group">
+              <label for="type"><h3>search by <b>type</b></h3></label>
+              <select class="form-control" (change)="selectChangeHandler($event)">
+                  <option value="temple"></option>
+                  <option value="temple">Temple</option>
+                  <option value="palace">Palace</option>
+                  <option value="shopping">Shopping Mall</option>
+                  <option value="park">Park</option>
+                  <option value="street">Walking street</option>
+                  <option value="other">Other</option>
+              </select>
+            </div>
+        </div>
+        <form (ngSubmit)="onSubmit()" #f="ngForm">
+        <div class="col-sm-8">
+          	<div class="col-sm-11">
+            	<div class="form-group">
+              		<label for="searchKey"><h3>search by <b>name</b></h3></label>
+              		<input type="text"
+               		id="searchKey"
+               		class="form-control"
+                  (input)="onSearchChange($event.target.value)"
+               		ngModel
+               		name="searchKey">
+            	</div>
+          	</div>
+  	        <div class="col-sm-1" style="margin-top: 27px">
+  	        	<button
+  	        	class="btn btn-primary"
+  	        	type="submit"
+  	        	style="margin-top: 34px">Go</button>
+  	        </div>
+          <!-- <form class="example-form">
+            <mat-form-field class="example-full-width">
+              <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of options" [value]="option">
+                  {{ option }}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </form> -->
+        </div>
+    	</form>
+	</div>
+  </div>
+	<hr>
+</div>
+<div *ngIf="selectedType">
+    <div class="col-xs-12 col-sm-8 col-md-8 col-sm-offset-1 col-md-offset-2">
+	<!-- <h4 style="margin-left: 100px">The list of places with the type "{{selectedType | uppercase}}"</h4> -->
+
+    <div class="col inline" *ngFor="let place of places">
+        <div class="col-sm-12" style="margin-bottom: 5px">
+        <hr>
+          <a routerLink="/detail/{{ place.attID }}">
+            <div class="col-sm-3">
+                <img [src]="place.img" style="width: 100%;">
+            </div>
+          </a>
+            <div class="col-sm-9" style="margin-top: -10px">
+              <a routerLink="/detail/{{ place.attID }}">
+                <h3 style="/*position: absolute; */text-align: left;">{{ place.name }}</h3>
+                <!-- <img [src]="place.img" style="width: 100%;"> -->
+              </a>
+
+                <p style="line-height: 25px; height: 75px; overflow: hidden; text-overflow: ellipsis">{{ place.description }}</p>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="searchKey">
+    <div class="col-xs-12 col-sm-8 col-md-8 col-sm-offset-1 col-md-offset-2">
+  <!-- <h4 style="margin-left: 100px">The list of places with the type "{{selectedType | uppercase}}"</h4> -->
+
+    <div class="col inline" *ngFor="let place of places">
+        <div class="col-sm-12" style="margin-bottom: 5px">
+        <hr>
+          <a routerLink="/detail/{{ place.attID }}">
+            <div class="col-sm-3">
+                <img [src]="place.img" class="rounded" style="width: 100%;">
+            </div>
+          </a>
+            <div class="col-sm-9" style="margin-top: -10px">
+              <a routerLink="/detail/{{ place.attID }}">
+                <h3 style="/*position: absolute; */text-align: left;">{{ place.name }}</h3>
+                <!-- <img [src]="place.img" style="width: 100%;"> -->
+              </a>
+
+                <p style="line-height: 25px; height: 75px; overflow: hidden; text-overflow: ellipsis">{{ place.description }}</p>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+</div>

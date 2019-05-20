@@ -1,0 +1,28 @@
+<script defer src="https://apis.google.com/js/platform.js"></script>
+<div class="justify-content-center" style="margin-top: 60px">
+</div>
+<br>
+<br>
+<br>
+<div style="margin: 3em auto; text-align:center">
+	<input #input type="text" value=test />
+	<button (click)="testRoute(input.value)">Test Route </button>
+</div>
+
+<div class="row">
+	<div class="col-sm-5">
+	</div>
+	<!-- [width]="myWidth" 
+	[theme]="myTheme" 
+	[scope]="myScope"
+	[longTitle]="myLongTitle"  -->
+	<div class="col-sm-2" style="width: fit-content;
+    margin: 0 auto;">
+		<google-signin [clientId]="getClientID" (googleSignInSuccess)="onGoogleSignInSuccess($event)" (click)="signIn()"
+			routerLink="/">
+		</google-signin>
+		<button class="btn btn-link" type="submit" (click)="signOut()">Sign out</button>
+	</div>
+	<div class="col-sm-5">
+	</div>
+</div>

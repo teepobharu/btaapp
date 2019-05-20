@@ -1,0 +1,146 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div>
+	<img src="/assets/bg.jpg" style="width:100%; margin-top: -100px; position: absolute;" > 
+<div class="container" style="margin-top: 60px">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <h3> <i class="material-icons" style="font-size:20px;color:darkred;">build</i> Edit Place</h3>
+        <div>
+            <!-- <button type="button" class="btn btn-success pull-right" style="margin: -45px 263px 0px 0px" (click)="validate()">Validate</button>
+            <button type="button" class="btn btn-danger pull-right" style="margin: -45px 193px 0px 0px" (click)="delete()">Delete</button> -->
+            <button type="button" class="btn btn-warning pull-right" style="margin: -45px 132px 0px 0px" (click)="reviewChange()"[disabled]="!f.valid">Save+View</button>
+            <button type="button" class="btn btn-default pull-right" style="margin: -45px 20px 0px 0px" (click)="goBack()">Back</button>
+        </div>
+      <hr>
+      <form (ngSubmit)="onSubmit()" #f="ngForm">
+        <div class="row">
+          <h3>{{eplace.placeName}}</h3>
+          <div class="col-sm-6">
+            <div class="form-group" style="margin-left: 16px">
+              
+              <label for="placeName">Place Name</label>
+              <input type="text" id="placeName" class="form-control" [(ngModel)]="eplace.placeName" name="placeName" required>
+            </div>
+          </div>
+          <!-- <div class="col-sm-6">
+            <button type="button" class="btn btn-link" style="margin: 23px 0px 0px -20px" (click)="addMoreName()"> More names</button>
+          </div>
+        </div>
+        <div *ngIf="moreName">
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="placeName2">
+                <small style="color: grey">Name 2</small>
+              </label>
+              <input type="text" id="placeName2" class="form-control" [(ngModel)]="eplace.names[0]" name="placeName2">
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="placeName3">
+                <small style="color: grey">Name 3</small>
+              </label>
+              <input type="text" id="placeName3" class="form-control" [(ngModel)]="eplace.placeName[1]" name="placeName3">
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="placeName4">
+                <small style="color: grey">Name 4</small>
+              </label>
+              <input type="text" id="placeName4" class="form-control" [(ngModel)]="eplace.placeName[2]" name="placeName4">
+            </div>
+          </div> -->
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="type">Type:</label>
+            <select class="form-control" id="type" [(ngModel)]="eplace.type" name="type" required>
+              <option value="temple">Temple</option>
+              <option value="palace">Palace</option>
+              <option value="shopping">Shopping</option>
+              <option value="park">Park</option>
+              <option value="street">Street</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="area">Area</label>
+            <input type="text" id="area" class="form-control" [(ngModel)]="eplace.area" name="area" required>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="cost">Cost</label>
+            <input type="text" id="cost" class="form-control" [(ngModel)]="eplace.cost" name="cost" required>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="operDay">Operating Days</label>
+            <input type="text" id="operDay" class="form-control" [(ngModel)]="eplace.operDay" name="operDay" required>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="operTime">Operating Time</label>
+            <input type="text" id="operTime" class="form-control" [(ngModel)]="eplace.operTime" name="operTime" required>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="suggTime">Suggested Time</label>
+            <input type="text" id="suggTime" class="form-control" [(ngModel)]="eplace.suggTime" name="suggTime" required>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label for="tansportation">Transportation</label>
+            <input type="text" id="transportation" class="form-control" [(ngModel)]="eplace.transportation" name="transportation" required>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea type="text" id="description" class="form-control" [(ngModel)]="eplace.description" name="description" required></textarea>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label for="coordinates">Google Coordinates</label>
+            <div class="row">
+              <div class="col-sm-6"> 
+                Latitude
+                <input type="text" id="lat" class="form-control" [(ngModel)]="lat" name="lat" required>
+              </div>
+              <div class="col-sm-6"> 
+                Longtitude
+                <input type="text" id="lng" class="form-control" [(ngModel)]="lng" name="lng" required>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label for="picture">Please upload pictures</label>
+            <div style="margin-bottom: 10px;">
+              <img *ngFor="let url of urls" [src]="url" width="170" height="110" style="margin: 4px" >
+              
+               <i *ngIf="Upload" class="fa-rotate-180 material-icons" style="fontsize:10px; display: inline;">chevron_left chevron_left</i>
+              <img  [ngStyle]="{opacity: Upload? 0.4 : 0.7}"
+                    [src]="imageData" width="170" height="110" style="margin: 4px; display: inline;">
+              <small *ngIf="Upload" style="color:cornflowerblue; font-size: 1.5em ; opacity:0.7;">(Old)</small>
+              <input type="file" multiple (change)="detectFiles($event)">
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary" style="margin-left: 16px;" type="submit" [disabled]="!f.valid"> Submit </button>
+        <button class="btn btn-debug" type="button" (click)="onReset()"> Reset </button>
+      </form>
+    </div>
+    <hr>
+</div>
+</div>

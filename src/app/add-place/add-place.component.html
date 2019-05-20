@@ -1,0 +1,120 @@
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<div>
+  <img src="/assets/bg.jpg" style="width:100%; margin-top: -100px; position: absolute;">
+  <div class="container" style="margin-top: 60px">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+        <h3> <i class="material-icons" style="font-size:20px;color:darkred;">account_circle</i> Create New Place</h3>
+        <button type="button" class="btn btn-default pull-right" style="margin: -35px 13px 0px 0px" (click)="goBack()">
+          Back</button>
+        <hr>
+        <form (ngSubmit)="onSubmit()" #f="ngForm">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group" style="margin-left: 16px">
+                <label for="placeName">Place Name</label>
+                <input type="text" id="placeName" class="form-control" ngModel name="placeName" required>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <button type="button" class="btn btn-link" style="margin: 23px 0px 0px -20px" (click)="addMoreName()"> +
+                More names can be called?</button>
+            </div>
+          </div>
+          <div *ngIf="moreName">
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label for="placeName2"><small style="color: grey">Name 2</small></label>
+                <input type="text" id="placeName2" class="form-control" ngModel name="placeName2">
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label for="placeName3"><small style="color: grey">Name 3</small></label>
+                <input type="text" id="placeName3" class="form-control" ngModel name="placeName3">
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label for="placeName4"><small style="color: grey">Name 4</small></label>
+                <input type="text" id="placeName4" class="form-control" ngModel name="placeName4">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="type">Type:</label>
+              <select class="form-control" id="type" ngModel name="type" required>
+                <option>Temple</option>
+                <option>Palace</option>
+                <option>Shopping</option>
+                <option>Park</option>
+                <option>Street</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="area">Area</label>
+              <input type="text" id="area" class="form-control" ngModel name="area" required>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="cost">Cost</label>
+              <input type="text" id="cost" class="form-control" ngModel name="cost" required>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="operDay">Operating Days</label>
+              <input type="text" id="operDay" class="form-control" ngModel name="operDay" required>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="operTime">Operating Time</label>
+              <input type="text" id="operTime" class="form-control" ngModel name="operTime" required>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="suggTime">Suggested Time</label>
+              <input type="text" id="suggTime" class="form-control" ngModel name="suggTime" required>
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="tansportation">Transportation</label>
+              <input type="text" id="transportation" class="form-control" ngModel name="transportation" required>
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea type="text" id="description" class="form-control" ngModel name="description" required
+                #description="ngModel"></textarea>
+              <!-- <span class="help-block" *ngIf="!description.valid && description.touched">Please enter your Description!</span> -->
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="picture">Please upload pictures</label>
+              <div style="margin-bottom: 10px;">
+                <img *ngFor="let url of urls" [src]="url" width="170" height="100" style="margin: 4px">
+                <input type="file" multiple (change)="detectFiles($event)">
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-primary" style="margin-left: 16px;" type="submit" [disabled]="!f.valid"> Submit
+          </button>
+          <button class="btn btn-debug" type="button" (click)="f.reset()"> Reset </button>
+        </form>
+      </div>
+    </div>
+    <hr>
+  </div>
+</div>

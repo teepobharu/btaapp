@@ -1,0 +1,46 @@
+<div class="container" style="margin-top: 60px">
+	<div class="row">
+    	<div class="col-xs-12 col-sm-10 col-md-12 col-sm-offset-0 col-md-offset-0">
+    		<h1>Welcome,</h1>
+				<button class="btn btn-danger" routerLink="/" (click)="signOut()" type="button" style="margin: 5px; font-size: 18px;">Logout</button>
+    		<hr>
+        	<div class="col-sm-5">
+        		<h3>Favorites</h3>
+	    		<div class="col inline" *ngFor="let place of places">
+			        <div class="col-sm-12" style="margin-bottom: 5px">
+			        <hr>
+			          <a routerLink="/detail/{{ place.attID }}">
+			            <div class="col-sm-4">
+			                <img class="rounded" [src]="place.img" style="width: 100%;">
+			            </div>
+			          </a>
+			            <div class="col-sm-8" style="margin-top: 0px">
+			              <a routerLink="/detail/{{ place.attID }}">
+			                <h4 style="/*position: absolute; */text-align: left;">{{ place.name }}</h4>
+			                <!-- <img [src]="place.img" style="width: 100%;"> -->
+			              </a>
+
+			                <!-- <p style="line-height: 25px; height: 75px; overflow: hidden; text-overflow: ellipsis">{{ place.description }}</p> -->
+			            </div>
+			        </div>
+			    </div>
+			</div>
+        	<div class="col-sm-7">
+        		<h3 style="margin-bottom: 10px;">History</h3>
+		    		<div class="col inline" *ngFor="let route of routes; index as i;" style="border-left: solid 2px; color: #bbb; margin: 0px 0px 10px 10px; padding-top: 15px;">
+		        			<button routerLink="/routedetail/{{route[i].routeID}}/{{route[i].date}}" class="btn btn-primary pull-right" type="button" style="margin: 5px; font-size: 18px;">View</button>
+		    			<div *ngIf="routes[i][0].rated=='Y'">
+		        			<button class="btn btn-basic pull-right" type="button" style="margin: 5px; font-size: 18px;">Rated</button>
+		        		</div>
+		    			<div *ngIf="routes[i][0].rated=='N'">
+		        			<button routerLink="/feedback/{{route[i].routeID}}" class="btn btn-warning pull-right" type="button" style="margin: 5px; font-size: 18px;">Unrated</button>
+		        		</div>
+		    				<div class="col inline" *ngFor="let att of routes[i]; index as j;">
+		    					<p style="color: #555; margin-left: 20px;">{{att.name}}</p>
+							</div>
+					<hr>
+		    		</div>
+        	</div>
+    	</div>
+	</div>
+</div>

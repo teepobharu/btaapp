@@ -1,0 +1,8 @@
+<div *ngIf="type" (change)="changeType($event)">
+	<!-- <h4 style="margin-left: 100px">The list of places with the type "{{type | uppercase}}"</h4> -->
+    <span class="col inline" style="margin:10px 10px;" *ngFor="let place of places">
+        <a routerLink="/detail/{{ place.ID }}" class="btn btn-info btn-lg">
+            {{ place.Name }}
+          </a>
+    </span>
+</div>

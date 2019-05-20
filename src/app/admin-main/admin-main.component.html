@@ -1,0 +1,36 @@
+<div class="container" style="margin-top: 60px">
+	<div class="row">
+		<div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+			<div *ngIf="!(unvalidatedPlaces==0)">
+				<div class="col-sm-6 lead text-center"
+					style="height: 250px; color: white; border: solid white; background-color: #f9a9a9;"
+					routerLink="/admin/places">
+					<p style="font-size: 120px;">{{unvalidatedPlaces}}</p>
+					<p style="font-size: 30px;">Unvalidated <b>Places</b></p>
+				</div>
+			</div>
+			<div *ngIf="unvalidatedPlaces==0">
+				<div class="col-sm-6 lead text-center"
+					style="height: 250px; color: white; border: solid white; background-color: #B9F4C4;">
+					<p style="font-size: 120px;">{{unvalidatedPlaces}}</p>
+					<p style="font-size: 30px;">Unvalidated <b>Places</b></p>
+				</div>
+			</div>
+			<div *ngIf="!(unvalidatedEvents==0)">
+				<div class="col-sm-6 lead text-center"
+					style="height: 250px; color: white; border: solid white; background-color: #f9a9a9;"
+					routerLink="/admin/events">
+					<p style="font-size: 120px;">{{unvalidatedEvents}}</p>
+					<p style="font-size: 30px;">Unvalidated <b>Events</b></p>
+				</div>
+			</div>
+			<div *ngIf="unvalidatedEvents==0">
+				<div class="col-sm-6 lead text-center"
+					style="height: 250px; color: white; border: solid white; background-color: #B9F4C4;">
+					<p style="font-size: 120px;">{{unvalidatedEvents}}</p>
+					<p style="font-size: 30px;">Unvalidated <b>Events</b></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

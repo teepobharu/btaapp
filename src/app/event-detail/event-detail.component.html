@@ -1,0 +1,86 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div>
+	<img src="/assets/bg.jpg" style="width:100%; margin-top: -100px; position: absolute;" > 
+<div *ngIf="place">
+
+<div class="container" style="margin-top: 60px">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1 ">
+    <div style="padding-left:20px">
+      <h2>{{ place[0].name }}</h2>
+    </div>
+    <div *ngIf="place[0].validated=='N'">
+      <button type="button" class="btn btn-success pull-right" style="margin: -45px 263px 0px 0px" (click)="validate()">Validate</button>
+      <button type="button" class="btn btn-warning pull-right" style="margin: -45px 201px 0px 0px" (click)="edit()">Edit</button>
+      <button type="button" class="btn btn-danger pull-right" style="margin: -45px 123px 0px 0px" (click)="delete()">Delete</button>
+    </div>
+	  <button type="button" class="btn btn-default pull-right" style="margin: -45px 53px 0px 0px" (click)="goBack()">Back</button>
+      <hr>
+      <div class="row">
+        <div class="col-sm-5" style="height: 250px;">
+        	<img [src]="imageData" style="width: 100%;">
+        </div>
+
+        <!-- <div class="row">
+  	      <div style="height: 250px;">
+  	      	<img [src]="imageData" style="height: 100%; display: block; margin-left: auto; margin-right: auto;">
+  	      </div>
+  	  </div> -->
+
+
+        <div class="col-sm-7">
+    		  <div class="row" style="margin: -15px 6px 10px 6px;">
+        		<h3>Overview</h3>
+  	  	  	<div><span>{{ place[0].description }}</span></div>
+  	  	  </div>
+
+          <div class="row" style="margin: 0px 2px 10px 2px;">
+              <div class="col-sm-6">
+                <h4><span class="glyphicon glyphicon-calendar"></span> Operating Day</h4>
+              <div><span>{{ place[0].operDate }}</span></div>
+              </div>
+              <div class="col-sm-6">
+                <h4><span class="glyphicon glyphicon-time"></span> Operating Time</h4>
+              <div><span>{{ place[0].operTime }}</span></div>
+              </div>
+          </div>
+
+          <div class="row" style="margin: 0px 2px 10px 2px;">
+              <div class="col-sm-6">
+                <h4><i class="fa fa-money" style="font-size:24px"></i> Cost</h4>
+              <div><span>{{ place[0].cost }}</span></div>
+              </div>
+              <div class="col-sm-6">
+                <h4><i class="fa fa-map-marker" style="font-size:24px"></i> Zone</h4>
+              <div><span>{{ place[0].zone }}</span></div>
+              </div>
+          </div>
+  	    </div>
+      </div>
+
+      <!-- Starting the Gmap -->
+      <div id="map" class="col-sm-12" style="margin: 30px 0px 30px 0px;">
+        <agm-map [latitude]="lat" [longitude]="lng" [zoom]=16>
+          <agm-marker
+          [latitude]="lat"
+          [longitude]="lng"
+          ></agm-marker>
+        </agm-map>
+      </div>
+
+
+	  <!-- <div class="col-sm-12">
+	    <h3>Comments</h3>
+    	<div class="col inline" *ngFor="let comment of comments">
+		    <blockquote>
+			    <p>{{comment.feedback}}</p>
+			    <footer>{{comment.name}}</footer>
+          <p class="pull-right" style="margin-top:-20px; color: darkblue">Rated <b>{{comment.rating}}%</b></p>
+			</blockquote>
+		</div>
+	  </div> -->
+	</div>
+  </div>
+</div>
+</div>

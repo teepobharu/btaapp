@@ -1,0 +1,9 @@
+setup:
+  config:
+    WEB_URL: https://btaweb.herokuapp.com/
+    DB_HOST: us-cdbr-iron-east-02.cleardb.net
+    DB_PORT: 3306
+    DB_USER: ba84f145b487b4
+    DB_PASS: 41af9984
+    DB_NAME: heroku_fba6926e1dc2557
+    CLEARDB_DATABASE_URL: mysql://ba84f145b487b4:41af9984@us-cdbr-iron-east-02.cleardb.net/heroku_fba6926e1dc2557?reconnect=true

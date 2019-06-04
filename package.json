@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "nodemon server.js",
+    "debug": "nodemon server.js",
+    "start": "node server.js",
     "ghp": "ng build --prod --base-href 'https://teepobharu.github.io/btaapp/'",
     "build": "ng build --prod",
     "postinstall": "ng build --prod",

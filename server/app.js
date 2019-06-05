@@ -46,10 +46,14 @@ app.use(function (req, res, next) {
 });
 
 con.connect(function (err) {
-	if (err)
+	if (err) {
+		console.log(err);
 		debug(err);
-	else
+	}
+	else {
+		console.log("CONNECT TO DATABASE");
 		debug("Connected to Database!!!");
+	}
 });
 
 // app.use(cors());
@@ -59,8 +63,8 @@ app.use(bodyParser.json());
 // 	debug('Server started!');
 // });
 app.route('/api/test').get((req, res) => {
+	console.log("TESTROUTE");
 	debug("TESTROUTE");
-
 });
 
 app.route('/api/createPlace').post((req, res) => {
@@ -502,6 +506,8 @@ app.route('/api/getNames/:id').get((req, res) => {
 });
 
 if (process.env.NODE_ENV == "production") {
+	console.log("PRODUCTION SERVING INDEX DEPLOY");
+	debug("PRODUCTION SERVING INDEX DEPLOY");
 	app.use(express.static(path.join(__dirname, "../dist/BTA")));
 	app.get('/*', (req, res) => {
 		res.sendFile((path.join(__dirname, "../dist/BTA/index.html")));

@@ -10,12 +10,24 @@ var corsOptions = {
 	origin: 'http://localhost:4200',
 	optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
-var con = mysql.createConnection({
-	host: process.env.DB_HOST,
-	port: process.env.DB_PORT,
-	user: process.env.DB_USER,
-	password: process.env.DB_PASS,
-	database: process.env.DB_NAME
+// var con = mysql.createConnection({
+// 	host: process.env.DB_HOST,
+// 	port: process.env.DB_PORT,
+// 	user: process.env.DB_USER,
+// 	password: process.env.DB_PASS,
+// 	database: process.env.DB_NAME,
+// });
+var con = mysql.createConnection(process.env.CLEARDB_DATABASE_URL);
+
+con.connect(function (err) {
+	if (err) {
+		console.log(err);
+		debug(err);
+	}
+	else {
+		console.log("CONNECT TO DATABASE");
+		debug("Connected to Database!!!");
+	}
 });
 
 var storage = multer.diskStorage({
@@ -45,16 +57,6 @@ app.use(function (req, res, next) {
 	next();
 });
 
-con.connect(function (err) {
-	if (err) {
-		console.log(err);
-		debug(err);
-	}
-	else {
-		console.log("CONNECT TO DATABASE");
-		debug("Connected to Database!!!");
-	}
-});
 
 // app.use(cors());
 app.use(bodyParser.json());
@@ -509,7 +511,7 @@ if (process.env.NODE_ENV == "production") {
 	console.log("PRODUCTION SERVING INDEX DEPLOY");
 	debug("PRODUCTION SERVING INDEX DEPLOY");
 	app.use(express.static(path.join(__dirname, "../dist/BTA")));
-	app.get('/*', (req, res) => {
+	app.get('/*', function (req, res) {
 		res.sendFile((path.join(__dirname, "../dist/BTA/index.html")));
 	});
 }

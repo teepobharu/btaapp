@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>Bangkok Traveling Assistance</title>
-  <base href="'https://teepobharu.github.io/btaapp/'">
+  <base href="https://teepobharu.github.io/btaapp/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script defer src="https://apis.google.com/js/platform.js"></script>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -18,7 +18,22 @@
 <link rel="stylesheet" href="styles.280e991c5992f8630bc9.css"></head>
 
 <body>
+  <!-- Github Pages hack to allow SPA refresh without receiving 404. -->
+  <script>
+    (function () {
+      // Retrieve the URL the user was trying to access when receiving the 404.
+      var redirect = sessionStorage.redirect;
+      // Remove the URL from sessionStorage.
+      delete sessionStorage.redirect;
+      // Check if we actually need to redirect.
+      if (redirect && redirect != location.href) {
+        // We need to redirect to the URL the user was trying to access.
+        history.replaceState(null, null, redirect);
+      }
+    })();
+  </script>
+  <!-- /Github Pages hack. -->
   <app-root></app-root>
-<script type="text/javascript" src="runtime.26209474bfa8dc87a77c.js"></script><script type="text/javascript" src="es2015-polyfills.c5dd28b362270c767b34.js" nomodule></script><script type="text/javascript" src="polyfills.89d6e8d3df6f18eb87f2.js"></script><script type="text/javascript" src="main.70c3cdf999f1afa79c84.js"></script></body>
+<script type="text/javascript" src="runtime.26209474bfa8dc87a77c.js"></script><script type="text/javascript" src="es2015-polyfills.c5dd28b362270c767b34.js" nomodule></script><script type="text/javascript" src="polyfills.89d6e8d3df6f18eb87f2.js"></script><script type="text/javascript" src="main.3046dbdb3a943e8bd5e9.js"></script></body>
 
 </html>

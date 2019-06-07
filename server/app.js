@@ -44,7 +44,7 @@ var upload = multer({ storage: storage });
 
 app.use(express.static(path.join(__dirname, 'uploads')));
 
-app.use(function (req, res, next) {
+app.use((req, res, next) => {
 	res.setHeader("Access-Control-Allow-Origin", "*");
 	res.setHeader(
 		"Access-Control-Allow-Headers",
@@ -58,7 +58,7 @@ app.use(function (req, res, next) {
 });
 
 
-// app.use(cors());
+app.use(cors());
 app.use(bodyParser.json());
 
 // app.listen(8000, () => {

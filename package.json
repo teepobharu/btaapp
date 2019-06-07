@@ -6,7 +6,7 @@
     "ng": "ng",
     "debug": "nodemon server.js",
     "start": "node server.js",
-    "ghp": "ng build --prod --base-href 'https://teepobharu.github.io/btaapp/'",
+    "ghp": "ng build --prod --base-href=https://teepobharu.github.io/btaapp/",
     "build": "ng build --prod",
     "postinstall": "ng build --prod",
     "test": "ng test",
